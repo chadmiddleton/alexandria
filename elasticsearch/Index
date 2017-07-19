@@ -1,0 +1,47 @@
+Near real time from writing to reading ~1 sec
+
+Index is a cluster of nodes: grouped by name
+    default: 'elasticsearch'
+
+Nodes are defualt named a Marvel character
+
+Index = database
+Type = subsection/collection
+Document = object stored - JSON format
+
+Shards = distributed pieces of an Index
+    Used for performance and scalability
+    Splits information in a horizontal fashion
+    Number of shards is defined when creating an Index and is locked
+Replicas = copies of shards and are dynamic
+    default: 5 primary shards with 1 replica for each
+
+REST API is available for searches, health, status, and CRUD
+
+Commands
+Return all Indices
+    - curl -XPUT 'node:port/_cat/indices?v'
+        status: green/yellow/red
+            will be yellow until multiple nodes are in place
+Return specific index
+    - curl -XPUT 'node:port/index?pretty'
+Create Document with id
+    - curl -XPUT 'node:port/index/type/id?pretty' -d '{JSON}'
+Get Document by id
+    - curl -XGET 'node:port/index/type/id?pretty'
+Delete entire Index
+    - curl -XDELETE 'node:port/index?pretty'
+Create Document with system generated Id
+    - curl -XPOST 'node:port/index/type?pretty' -d '{JSON}'
+
+Updating Documents
+    -curl -XPOST 'node:port/index/type/id/_update?pretty' -d '{JSON}'
+    Under the hood and update deletes a document and creates a new document from the JSON provided
+    Limited to single document update at a time
+
+Delete Doc by id
+    - curl -XDELETE 'node:port/index/type/id?pretty'
+Delete Doc by query
+    - curl -XDELETE 'nod:port/index/type/_query?pretty' -d '{"query":{"match":{"name":"John"}}}'
+
+
