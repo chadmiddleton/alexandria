@@ -1,0 +1,29 @@
+Non-relational database for JSON docs
+  key:value
+Schemaless "dynamic schema" database
+Drawbacks:
+  - no joins
+  - no transactions
+  
+Mongo shell is a stand alone interface for the MongoDB
+
+Spark framework <= more research needed
+
+Arrays and dictonanes are the two ?? 
+
+use 'db-name'
+
+Manipulating data: 
+  db-name.collection.command({})
+  
+Commands: 
+  Entering = save
+  Search = find
+  Entering = insert
+  Find one = findOne
+  
+Finding one document
+  db-name.collection.findOne({})({field:boolean})
+    - second object is boolean for returning that field
+
+The .pretty may be appended onto the end of the command to format result
